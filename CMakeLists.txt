@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.25)
+project(space_invaders C)
+
+set(EMULATOR_DIR /home/lambda/projects/space_invaders/emulator)
+set(EMULATOR_LIBS ${EMULATOR_DIR}/cpu.o ${EMULATOR_DIR}/io.o)
+set(CMAKE_C_STANDARD 17)
+find_package(SDL2 REQUIRED)
+include_directories(space_invaders ${SDL2_INCLUDE_DIRS} ../emulator/)
+add_executable(space_invaders main.c)
+target_link_libraries(space_invaders ${SDL2_LIBRARIES} ${EMULATOR_LIBS})
